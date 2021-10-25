@@ -10,8 +10,9 @@ const Form = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log('You clicked submit.');
-      }
+        console.log(e.target.nome.value);
+        console.log(e.target.endereco.value);
+    }
 
 
 
@@ -23,11 +24,11 @@ const Form = () => {
                     <fieldset class="grupo">
                     <div class="campo">
                             <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" value="" />
+                            <input type="text" id = "nome" name="nome" />
                         </div>
                         <div class="campo">
                             <label for="nome">Endereço</label>
-                            <input type="text" id="nome" name="nome" value="" />
+                            <input type="text" id = "endereco" name="endereco" />
                         </div>
                     </fieldset>
                 </fieldset>
