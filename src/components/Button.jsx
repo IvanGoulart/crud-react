@@ -1,13 +1,12 @@
 import React from "react";
 
-
-const Button = ({props}) => {
+const Button = ({props}, onClick) => {
 console.log(props);
     return(
-<>
-        <button type="submit" class="botao submit">{props}</button>
+        <>
+            <button type="submit" onClink = {onClick} class="botao submit">{props}</button>
 
-</>
+        </>
     )
 }
 

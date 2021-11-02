@@ -1,19 +1,31 @@
 import React from "react";
 import Button from './Button';
-
 import './Form.css'
 
-//import Button from 'react-bootstrap/Button';
-
+import api from '../services/api.js'
+import { useHistory } from "react-router-dom";
 
 const Form = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(e.target.nome.value);
-        console.log(e.target.endereco.value);
+
+        let nome = e.target.nome.value;
+        let endereco = e.target.endereco.value;
+
+        const response = api.post("/customer", {nome, endereco }
+        
+        );
+
+      console.log(response);
     }
 
+
+    const history = useHistory();
+
+    const handleCustomerListClick = () => {
+        history.push(`/`)
+    }
 
 
     return (
@@ -34,6 +46,8 @@ const Form = () => {
                 </fieldset>
                 <Button props="Enviar"/> 
             </form>
+
+            <Button onClick = {handleCustomerListClick} props="Listar"/>
         </div>
     );
 }
