@@ -3,7 +3,11 @@ import Button from './Button';
 import './Form.css'
 
 import api from '../services/api.js'
-import { useHistory } from "react-router-dom";
+
+import {
+    BrowserRouter as Router,
+    useHistory
+  } from "react-router-dom";
 
 const Form = () => {
 
@@ -29,26 +33,27 @@ const Form = () => {
 
 
     return (
-        <div className="Form">
-            <h3>Cadastro</h3>
-            <form onSubmit={handleSubmit}>
-                <fieldset>
-                    <fieldset class="grupo">
-                    <div class="campo">
-                            <label for="nome">Nome</label>
-                            <input type="text" id = "nome" name="nome" />
-                        </div>
+        <Router>
+            <div className="Form">
+                <h3>Cadastro</h3>
+                <form onSubmit={handleSubmit}>
+                    <fieldset>
+                        <fieldset class="grupo">
                         <div class="campo">
-                            <label for="nome">Endereço</label>
-                            <input type="text" id = "endereco" name="endereco" />
-                        </div>
+                                <label for="nome">Nome</label>
+                                <input type="text" id = "nome" name="nome" />
+                            </div>
+                            <div class="campo">
+                                <label for="nome">Endereço</label>
+                                <input type="text" id = "endereco" name="endereco" />
+                            </div>
+                        </fieldset>
                     </fieldset>
-                </fieldset>
-                <Button props="Enviar"/> 
-            </form>
+                    <Button props="Enviar"/> 
+                </form>
+            </div>
+        </Router>
 
-            <Button onClick = {handleCustomerListClick} props="Listar"/>
-        </div>
     );
 }
 
