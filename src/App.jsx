@@ -7,13 +7,13 @@ import { BrowserRouter as Router,
         Link
       } from 'react-router-dom';
 
-
 import Form from './components/Form'
 import ListCustomer from './components/ListCustomer';
 
 import Nav from './components/Nav';
 
-function App() {
+const App  = props => {
+
   return (
 
   <Router>
@@ -24,14 +24,12 @@ function App() {
         <Nav/>    
           <Switch>
             <Route path="/" exact component={Form} />
-            <Route path="/list" component={ListCustomer} />
+            <Route path="/list" exact component={ListCustomer} />
           </Switch>
         </div>
       </header>
 
     </div>
-
-
   </Router>  
 
   );
