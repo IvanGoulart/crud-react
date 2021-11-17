@@ -8,12 +8,13 @@
     margin: 0px auto;
     perspective: 2000px;
     flex-wrap: wrap;
-    top: -28px;
+    top: 0px;
     text-decoration: none;
-    background-color: #8978ed;
+    position: fixed;
+   /* background-color: #8978ed;*/
 }
 
-.nav a{
+nav a{
     text-decoration: none;
     color: #f1f1f1;
     font-weight: 700;
@@ -22,13 +23,17 @@
     
 }
 
-.nav a:hover {
+/*.nav a:hover {
     background-color: #000000; 
     transition: 0.5s;
     opacity: 0.7;
-}
+}*/
 
 li{
     display: inline-flex;
     padding-right: 25px;
+}
+
+.menu-text {
+    color: grey;
 }
