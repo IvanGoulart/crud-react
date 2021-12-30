@@ -6,21 +6,26 @@ import api from '../services/api.js'
 import { IconContext } from "react-icons";
 import { FiTrash2 } from "react-icons/fi";
 
-import { Table } from 'reactstrap';
-import { Button } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import './style.css'
+import { Link } from 'react-router-dom'
 
-function onClickDelete(id) {
 
-    api.get("/customerdelete",{
-            id: id
-    });
-}
 const ListCustomer = () => {
 
     const [customers, setCustomer] = useState([]);
 
-    useEffect(() => {
+    function onClickDelete(id) {
+        console.log(customers);
+
+        api.get("/customerdelete/"+id);
+
+        const newCustomers = customers.filter(customer => customer.id !== id)
+
+        setCustomer(newCustomers);
+   }
+
+   useEffect(() => {
   
       const fetchTasks = async () => {
         const { data } = await api.get(
@@ -34,8 +39,8 @@ const ListCustomer = () => {
     }, []);
 
     return(
-        <>
-            <Table hover>
+        <div className= "table">
+            <Table hover >
                 <thead>
                     <tr>
                     <th>
@@ -43,6 +48,9 @@ const ListCustomer = () => {
                     </th>
                     <th>
                         Nome
+                    </th>
+                    <th>
+                        Email
                     </th>
                     <th>
                         Endereço
@@ -57,26 +65,36 @@ const ListCustomer = () => {
 
                     <tr>
                         <th scope="row">
-                        {customer.id}
+                            {customer.id}
                         </th>
                         <td>
-                        {customer.nome}
+                            {customer.nome}
                         </td>
                         <td>
-                        {customer.endereco}
+                            {customer.email}
                         </td>
                         <td>
-                        <IconContext.Provider value={{ color: "blue", className: "global-class-name", size: "0.8em" }}>
-                            <Button outline onClick={()=>onClickDelete(customer.id)}><FiTrash2 /></Button>
-                        </IconContext.Provider>
+                            {customer.endereco}
+                        </td>
+                        <td>
+                            <IconContext.Provider value={{ color: "red", className: "global-class-name", size: "0.8em" }}>
+                                <Button outline onClick={()=>onClickDelete(customer.id)}><FiTrash2 /></Button>
+                            </IconContext.Provider>
+                        </td>
+                        <td>
+                            <IconContext.Provider value={{ color: "blue", className: "global-class-name", size: "0.8em" }}>
+                                <Link to="/update">
+                                    <Button outline ><FiTrash2 /></Button>
+                                </Link>
+                            </IconContext.Provider>
                         </td>
                     </tr>
 
                      ))}
                 </tbody>
-                </Table>
+            </Table>
 
-        </>
+        </div>
     );
 }
 

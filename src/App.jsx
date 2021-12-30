@@ -18,11 +18,9 @@ const App  = props => {
   return (
 
   <Router>
-
-
     <div className="App">
       <header className="App-header">
-        <div className="container" st>
+        <div className="container">
 
           <Nav>
               <NavItem>
@@ -36,6 +34,7 @@ const App  = props => {
           <Switch>
             <Route path="/" exact component={Form} />
             <Route path="/list" exact component={ListCustomer} />
+            <Route path="/update" exact component={Form} />
           </Switch>
         </div>
       </header>

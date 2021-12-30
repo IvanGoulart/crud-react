@@ -1,4 +1,10 @@
 .table {
-    color: grey;
+    color: grey !important; 
     font-size: 15px;
 }
+
+h3, label {
+    color: grey;
+}
+
+
